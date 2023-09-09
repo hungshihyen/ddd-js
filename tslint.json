@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "tslint-config-standard",
+    "tslint-plugin-prettier"
+  ],
+  "rules": {
+    // 自定义规则
+  },
+  "linterOptions": {
+    "exclude": [
+      "node_modules"
+    ]
+  }
+}
