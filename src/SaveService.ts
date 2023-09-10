@@ -10,7 +10,7 @@ export class SaveService {
     save(userId: number, amount: number) {
         const user = this.userRepository.find(userId);
 
-        user.amount += amount;
+        user.addAmount(amount);
 
         this.userRepository.save(user);
     }

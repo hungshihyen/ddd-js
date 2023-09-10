@@ -7,4 +7,7 @@ export class User {
         this.amount = amount;
     }
 
+    addAmount(amount: number) {
+        this.amount += amount;
+    }
 }
