@@ -1,3 +1,9 @@
+class WalletController {
+    getBalance(): any {
+        return 0;
+    }
+}
+
 describe('WalletController', () => {
     // get balance
     // save 100
@@ -7,6 +13,10 @@ describe('WalletController', () => {
     // bad format amount
     // user not found
     // user locked
+
+    it('get balance', () => {
+        expect(new WalletController().getBalance()).toBe(0)
+    });
 
 
 });
