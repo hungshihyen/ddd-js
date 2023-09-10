@@ -3,11 +3,8 @@ import { User } from "./User";
 export type UserMapper = { [key: number]: User };
 
 export class UserRepository {
-    mapper: UserMapper;
+    mapper: UserMapper = {};
 
-    constructor(mapper: UserMapper) {
-        this.mapper = mapper;
-    }
 
     save(user: User) {
         this.mapper[user.userId] = user;

@@ -1,28 +1,16 @@
-import { UserMapper, UserRepository } from "./UserRepository";
+import { UserRepository } from "./UserRepository";
 import { CreateUserService } from "./CreateUserService";
 import { SaveService } from "./SaveService";
-
-class GetBalanceService {
-    userRepository: UserRepository;
-
-    constructor(userRepository: UserRepository) {
-        this.userRepository = userRepository;
-    }
-
-    get(userId: number) {
-        return this.userRepository.find(userId).amount;
-    }
-}
+import { GetBalanceService } from "./GetBalanceService";
 
 export class WalletController {
-    mapper: UserMapper = {};
-    private userRepository: UserRepository;
+    private readonly userRepository: UserRepository;
     private createUserService: CreateUserService;
     private saveService: SaveService;
     private getBalanceService: GetBalanceService;
 
     constructor() {
-        this.userRepository = new UserRepository(this.mapper);
+        this.userRepository = new UserRepository();
         this.createUserService = new CreateUserService(this.userRepository);
         this.saveService = new SaveService(this.userRepository);
         this.getBalanceService = new GetBalanceService(this.userRepository);
