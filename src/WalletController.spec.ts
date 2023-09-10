@@ -25,5 +25,11 @@ describe('WalletController', () => {
     });
 
 
+    it('save 100 twice', () => {
+        walletController.save(100);
+        walletController.save(100);
+        expect(walletController.getBalance()).toBe(200);
+    });
+
 
 });
