@@ -1,23 +1,30 @@
-class User {
-    userId: number;
-    amount: number;
+import { User } from "./User";
 
-    constructor(userId: number, amount: number) {
-        this.userId = userId;
-        this.amount = amount;
+type UserMapper = { [key: number]: User };
 
+class UserRepository {
+    mapper: UserMapper;
+
+    constructor(mapper: UserMapper) {
+        this.mapper = mapper;
     }
-
-}
-
-export class WalletController {
-    private amount = 0;
-    private mapper: { [key: number]: User } = {};
 
     create(userId: number) {
         this.mapper[userId] = new User(userId, 0);
     }
+}
 
+export class WalletController {
+    mapper: UserMapper = {};
+    private userRepository: UserRepository;
+
+    constructor() {
+        this.userRepository = new UserRepository(this.mapper);
+    }
+
+    create(userId: number) {
+        this.userRepository.create(userId);
+    }
 
     save(userId: number, amount: number) {
         const user = this.mapper[userId];
