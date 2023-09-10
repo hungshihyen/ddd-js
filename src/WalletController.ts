@@ -23,6 +23,6 @@ export class WalletController {
     }
 
     getBalance(userId: number): number {
-        return this.mapper[userId].amount;
+        return this.userRepository.find(userId).amount;
     }
 }
