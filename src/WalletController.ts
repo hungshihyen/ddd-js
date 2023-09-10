@@ -13,11 +13,13 @@ export class WalletController {
     }
 
     save(userId: number, amount: number) {
-        const user = this.mapper[userId];
+
+        const user = this.userRepository.find(userId);
 
         user.amount += amount;
 
-        this.mapper[userId] = user;
+        this.userRepository.save(user);
+
     }
 
     getBalance(userId: number): number {

@@ -9,6 +9,14 @@ export class UserRepository {
         this.mapper = mapper;
     }
 
+    save(user: User) {
+        this.mapper[user.userId] = user;
+    }
+
+    find(userId: number) {
+        return this.mapper[userId];
+    }
+
     create(userId: number) {
         this.mapper[userId] = new User(userId, 0);
     }
