@@ -1,5 +1,11 @@
 export class WalletController {
+    private amount = 0;
+
+    save(amount: number) {
+        this.amount = amount
+    }
+
     getBalance(): any {
-        return 0;
+        return this.amount;
     }
 }
