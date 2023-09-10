@@ -1,15 +1,29 @@
 import { UserMapper, UserRepository } from "./UserRepository";
 
-export class WalletController {
-    mapper: UserMapper = {};
+class CreateUserService {
     private userRepository: UserRepository;
 
-    constructor() {
-        this.userRepository = new UserRepository(this.mapper);
+    constructor(userRepository: UserRepository) {
+        this.userRepository = userRepository;
     }
 
     create(userId: number) {
         this.userRepository.create(userId);
+    }
+}
+
+export class WalletController {
+    mapper: UserMapper = {};
+    private userRepository: UserRepository;
+    private createUserService: CreateUserService;
+
+    constructor() {
+        this.userRepository = new UserRepository(this.mapper);
+        this.createUserService = new CreateUserService(this.userRepository);
+    }
+
+    create(userId: number) {
+        this.createUserService.create(userId);
     }
 
     save(userId: number, amount: number) {
