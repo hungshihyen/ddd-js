@@ -14,7 +14,7 @@ export class UserRepository {
         return this.mapper[userId];
     }
 
-    create(userId: number) {
-        this.mapper[userId] = new User(userId, 0);
+    create(user: User) {
+        this.mapper[user.userId] = user
     }
 }

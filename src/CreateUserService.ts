@@ -1,4 +1,5 @@
 import { UserRepository } from "./UserRepository";
+import { User } from "./User";
 
 export class CreateUserService {
     private userRepository: UserRepository;
@@ -8,6 +9,6 @@ export class CreateUserService {
     }
 
     create(userId: number) {
-        this.userRepository.create(userId);
+        this.userRepository.create(new User(userId, 0));
     }
 }
