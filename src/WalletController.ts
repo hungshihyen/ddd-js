@@ -1,19 +1,16 @@
 import { UserMapper, UserRepository } from "./UserRepository";
 import { CreateUserService } from "./CreateUserService";
+import { SaveService } from "./SaveService";
 
-class SaveService {
+class GetBalanceService {
     userRepository: UserRepository;
 
     constructor(userRepository: UserRepository) {
         this.userRepository = userRepository;
     }
 
-    save(userId: number, amount: number) {
-        const user = this.userRepository.find(userId);
-
-        user.amount += amount;
-
-        this.userRepository.save(user);
+    get(userId: number) {
+        return this.userRepository.find(userId).amount;
     }
 }
 
@@ -22,11 +19,13 @@ export class WalletController {
     private userRepository: UserRepository;
     private createUserService: CreateUserService;
     private saveService: SaveService;
+    private getBalanceService: GetBalanceService;
 
     constructor() {
         this.userRepository = new UserRepository(this.mapper);
         this.createUserService = new CreateUserService(this.userRepository);
         this.saveService = new SaveService(this.userRepository);
+        this.getBalanceService = new GetBalanceService(this.userRepository);
     }
 
     create(userId: number) {
@@ -38,6 +37,6 @@ export class WalletController {
     }
 
     getBalance(userId: number): number {
-        return this.userRepository.find(userId).amount;
+        return this.getBalanceService.get(userId);
     }
 }
