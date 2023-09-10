@@ -1,18 +1,4 @@
-import { User } from "./User";
-
-type UserMapper = { [key: number]: User };
-
-class UserRepository {
-    mapper: UserMapper;
-
-    constructor(mapper: UserMapper) {
-        this.mapper = mapper;
-    }
-
-    create(userId: number) {
-        this.mapper[userId] = new User(userId, 0);
-    }
-}
+import { UserMapper, UserRepository } from "./UserRepository";
 
 export class WalletController {
     mapper: UserMapper = {};
