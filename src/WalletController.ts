@@ -1,6 +1,6 @@
-import { CreateUserService } from "./CreateUserService";
-import { SaveService } from "./SaveService";
-import { GetBalanceService } from "./GetBalanceService";
+import { CreateUserService } from './CreateUserService';
+import { SaveService } from './SaveService';
+import { GetBalanceService } from './GetBalanceService';
 
 export class WalletController {
     private createUserService: CreateUserService;

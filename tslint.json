@@ -4,7 +4,12 @@
     "tslint-plugin-prettier"
   ],
   "rules": {
-    // 自定义规则
+    "semicolon": [
+      true
+    ],
+    "space-before-function-paren": [
+      false
+    ]
   },
   "linterOptions": {
     "exclude": [

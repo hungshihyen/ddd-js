@@ -1,10 +1,9 @@
-import { User } from "./User";
+import { User } from './User';
 
 export type UserMapper = { [key: number]: User };
 
 export class UserRepository {
     mapper: UserMapper = {};
-
 
     save(user: User) {
         this.mapper[user.userId] = user;
@@ -15,6 +14,6 @@ export class UserRepository {
     }
 
     create(user: User) {
-        this.mapper[user.userId] = user
+        this.mapper[user.userId] = user;
     }
 }

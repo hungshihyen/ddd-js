@@ -1,8 +1,8 @@
-import { WalletController } from "./WalletController";
-import { CreateUserService } from "./CreateUserService";
-import { SaveService } from "./SaveService";
-import { GetBalanceService } from "./GetBalanceService";
-import { UserRepository } from "./UserRepository";
+import { WalletController } from './WalletController';
+import { CreateUserService } from './CreateUserService';
+import { SaveService } from './SaveService';
+import { GetBalanceService } from './GetBalanceService';
+import { UserRepository } from './UserRepository';
 
 describe('WalletController', () => {
     let walletController: WalletController;
@@ -25,16 +25,14 @@ describe('WalletController', () => {
 
     it('get balance', () => {
         walletController.create(1);
-        expect(walletController.getBalance(1)).toBe(0)
+        expect(walletController.getBalance(1)).toBe(0);
     });
-
 
     it('save 100', () => {
         walletController.create(1);
         walletController.save(1, 100);
         expect(walletController.getBalance(1)).toBe(100);
     });
-
 
     it('save 100 twice', () => {
 
@@ -56,6 +54,5 @@ describe('WalletController', () => {
         expect(walletController.getBalance(1)).toBe(100);
         expect(walletController.getBalance(2)).toBe(200);
     });
-
 
 });
