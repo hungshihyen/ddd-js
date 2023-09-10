@@ -1,10 +1,7 @@
-class WalletController {
-    getBalance(): any {
-        return 0;
-    }
-}
+import { WalletController } from "./WalletController";
 
 describe('WalletController', () => {
+    let walletController: WalletController;
     // get balance
     // save 100
     // save 100 twice
@@ -13,9 +10,12 @@ describe('WalletController', () => {
     // bad format amount
     // user not found
     // user locked
+    beforeEach(() => {
+        walletController = new WalletController();
+    });
 
     it('get balance', () => {
-        expect(new WalletController().getBalance()).toBe(0)
+        expect(walletController.getBalance()).toBe(0)
     });
 
 
