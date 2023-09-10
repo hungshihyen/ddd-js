@@ -1,0 +1,12 @@
+describe('WalletController', () => {
+    // get balance
+    // save 100
+    // save 100 twice
+    // different users
+    // invalid amount
+    // bad format amount
+    // user not found
+    // user locked
+
+
+});
