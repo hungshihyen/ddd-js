@@ -1,4 +1,8 @@
 import { WalletController } from "./WalletController";
+import { CreateUserService } from "./CreateUserService";
+import { SaveService } from "./SaveService";
+import { GetBalanceService } from "./GetBalanceService";
+import { UserRepository } from "./UserRepository";
 
 describe('WalletController', () => {
     let walletController: WalletController;
@@ -11,7 +15,12 @@ describe('WalletController', () => {
     // user not found
     // user locked
     beforeEach(() => {
-        walletController = new WalletController();
+        const userRepository = new UserRepository();
+        walletController = new WalletController(
+            new CreateUserService(userRepository),
+            new SaveService(userRepository),
+            new GetBalanceService(userRepository)
+        );
     });
 
     it('get balance', () => {
