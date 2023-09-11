@@ -2,7 +2,7 @@ import { CreateUserService } from './CreateUserService';
 import { SaveService } from './SaveService';
 import { GetBalanceService } from './GetBalanceService';
 import { LockUserService } from './LockUserService';
-import { BAD_FORMAT_DATA, INVALID_AMOUNT } from "./ErrorCode";
+import { BAD_FORMAT_DATA, INVALID_AMOUNT } from './ErrorCode';
 
 export class WalletController {
     private lockUserService: LockUserService;
@@ -34,6 +34,7 @@ export class WalletController {
         if (amount <= 0) {
             throw new Error(INVALID_AMOUNT);
         }
+
         this.saveService.save(userId, amount);
     }
 

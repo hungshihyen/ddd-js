@@ -84,7 +84,6 @@ describe('WalletController', () => {
         expect(() => walletController.save(1, '100')).toThrowError(
             BAD_FORMAT_DATA
         );
-       
+
     });
 });
-
