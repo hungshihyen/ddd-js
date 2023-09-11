@@ -3,6 +3,7 @@ import { CreateUserService } from './CreateUserService';
 import { SaveService } from './SaveService';
 import { GetBalanceService } from './GetBalanceService';
 import { UserRepository } from './UserRepository';
+import { USER_NOT_FOUND } from './ErrorCode';
 
 describe('WalletController', () => {
     let walletController: WalletController;
@@ -54,5 +55,12 @@ describe('WalletController', () => {
         expect(walletController.getBalance(1)).toBe(100);
         expect(walletController.getBalance(2)).toBe(200);
     });
+
+    it('user not found', () => {
+        expect(() => walletController.save(1, 100)).toThrowError(
+            USER_NOT_FOUND
+        );
+    });
+
 
 });
