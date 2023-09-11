@@ -1,9 +1,9 @@
-import { WalletController } from './WalletController';
+import { LockUserService, WalletController } from './WalletController';
 import { CreateUserService } from './CreateUserService';
 import { SaveService } from './SaveService';
 import { GetBalanceService } from './GetBalanceService';
 import { UserRepository } from './UserRepository';
-import { USER_NOT_FOUND } from './ErrorCode';
+import { USER_LOCKED, USER_NOT_FOUND } from './ErrorCode';
 
 describe('WalletController', () => {
     let walletController: WalletController;
@@ -17,11 +17,7 @@ describe('WalletController', () => {
     // user locked
     beforeEach(() => {
         const userRepository = new UserRepository();
-        walletController = new WalletController(
-            new CreateUserService(userRepository),
-            new SaveService(userRepository),
-            new GetBalanceService(userRepository)
-        );
+        walletController = new WalletController(new CreateUserService(userRepository), new SaveService(userRepository), new GetBalanceService(userRepository), new LockUserService(userRepository));
     });
 
     it('get balance', () => {
@@ -62,5 +58,14 @@ describe('WalletController', () => {
         );
     });
 
+    it('user locked', () => {
 
+        walletController.create(1);
+
+        walletController.lockUser(1);
+
+        expect(() => walletController.save(1, 100)).toThrowError(
+            USER_LOCKED
+        );
+    });
 });

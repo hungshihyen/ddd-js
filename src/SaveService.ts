@@ -1,5 +1,5 @@
 import { UserRepository } from './UserRepository';
-import { USER_NOT_FOUND } from './ErrorCode';
+import { USER_LOCKED, USER_NOT_FOUND } from './ErrorCode';
 
 export class SaveService {
     userRepository: UserRepository;
@@ -13,6 +13,10 @@ export class SaveService {
 
         if (user === undefined) {
             throw new Error(USER_NOT_FOUND);
+        }
+
+        if (user.isLocked) {
+            throw new Error(USER_LOCKED);
         }
 
         user.addAmount(amount);
