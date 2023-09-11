@@ -1,9 +1,10 @@
-import { LockUserService, WalletController } from './WalletController';
+import { WalletController } from './WalletController';
 import { CreateUserService } from './CreateUserService';
 import { SaveService } from './SaveService';
 import { GetBalanceService } from './GetBalanceService';
 import { UserRepository } from './UserRepository';
 import { USER_LOCKED, USER_NOT_FOUND } from './ErrorCode';
+import { LockUserService } from './LockUserService';
 
 describe('WalletController', () => {
     let walletController: WalletController;
