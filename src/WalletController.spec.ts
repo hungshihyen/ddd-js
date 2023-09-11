@@ -3,7 +3,7 @@ import { CreateUserService } from './CreateUserService';
 import { SaveService } from './SaveService';
 import { GetBalanceService } from './GetBalanceService';
 import { UserRepository } from './UserRepository';
-import { USER_LOCKED, USER_NOT_FOUND } from './ErrorCode';
+import { INVALID_AMOUNT, USER_LOCKED, USER_NOT_FOUND } from './ErrorCode';
 import { LockUserService } from './LockUserService';
 
 describe('WalletController', () => {
@@ -69,4 +69,13 @@ describe('WalletController', () => {
             USER_LOCKED
         );
     });
+
+    it('invalid amount', () => {
+        walletController.create(1);
+
+        expect(() => walletController.save(1, -100)).toThrowError(
+            INVALID_AMOUNT
+        );
+    });
+
 });
