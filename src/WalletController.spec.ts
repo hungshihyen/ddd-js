@@ -3,7 +3,7 @@ import { CreateUserService } from './CreateUserService';
 import { SaveService } from './SaveService';
 import { GetBalanceService } from './GetBalanceService';
 import { UserRepository } from './UserRepository';
-import { INVALID_AMOUNT, USER_LOCKED, USER_NOT_FOUND } from './ErrorCode';
+import { BAD_FORMAT_DATA, INVALID_AMOUNT, USER_LOCKED, USER_NOT_FOUND } from './ErrorCode';
 import { LockUserService } from './LockUserService';
 
 describe('WalletController', () => {
@@ -78,4 +78,13 @@ describe('WalletController', () => {
         );
     });
 
+    it('bad format amount', () => {
+        walletController.create(1);
+
+        expect(() => walletController.save(1, '100')).toThrowError(
+            BAD_FORMAT_DATA
+        );
+       
+    });
 });
+
