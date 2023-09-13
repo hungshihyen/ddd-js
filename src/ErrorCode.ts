@@ -1,4 +1,0 @@
-export const USER_NOT_FOUND = 'USER_NOT_FOUND';
-export const USER_LOCKED = 'USER_LOCKED';
-export const INVALID_AMOUNT = 'INVALID AMOUNT';
-export const BAD_FORMAT_DATA = 'BAD_FORMAT_DATA';
