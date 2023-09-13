@@ -6,7 +6,7 @@ class WalletController {
     }
 
     save(arg0: number): any {
-        this.amount = arg0;
+        this.amount += arg0;
 
     }
 }
@@ -26,6 +26,16 @@ describe('WalletController', () => {
 
         const walletController = new WalletController();
         walletController.save(200);
+
+        expect(walletController.getBalance()).toBe(200);
+
+    });
+
+    it('save twice', () => {
+
+        const walletController = new WalletController();
+        walletController.save(100);
+        walletController.save(100);
 
         expect(walletController.getBalance()).toBe(200);
 
