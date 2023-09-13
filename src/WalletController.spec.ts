@@ -1,4 +1,8 @@
 class WalletController {
+    getBalance(): any {
+        return 100;
+    }
+
     save(arg0: number): any {
 
     }
@@ -10,9 +14,13 @@ describe('WalletController', () => {
     // all ok
     // account locked
 
-    it('should save success', () => {
+    it('should save successful', () => {
 
-        new WalletController().save(100);
+        const walletController = new WalletController();
+        walletController.save(100);
+
+        expect(walletController.getBalance()).toBe(100);
 
     });
+
 });
