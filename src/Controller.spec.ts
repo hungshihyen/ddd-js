@@ -1,14 +1,18 @@
 import { WalletController } from './WalletController';
 import { INVALID_AMOUNT, USER_NOT_FOUND } from './ErrorCode';
+import { WalletRepository } from './WalletRepository';
 
 describe('Controller', () => {
     let walletController: WalletController;
+    let walletRepository: WalletRepository;
+
     beforeEach(() => {
-        walletController = new WalletController();
+        walletRepository = new WalletRepository();
+        walletController = new WalletController(walletRepository);
     });
 
     it('should save money ok', () => {
-        walletController.mapper[1] = 0;
+        walletRepository.mapper[1] = 0;
 
         walletController.save(1, 1000);
 
@@ -17,7 +21,7 @@ describe('Controller', () => {
 
     it('should save 2000', () => {
 
-        walletController.mapper[1] = 0;
+        walletRepository.mapper[1] = 0;
 
         walletController.save(1, 2000);
 
@@ -26,7 +30,7 @@ describe('Controller', () => {
 
     it('should save 1000 twice', () => {
 
-        walletController.mapper[1] = 0;
+        walletRepository.mapper[1] = 0;
 
         walletController.save(1, 1000);
         walletController.save(1, 1000);
@@ -36,8 +40,8 @@ describe('Controller', () => {
 
     it('different users', () => {
 
-        walletController.mapper[1] = 0;
-        walletController.mapper[2] = 0;
+        walletRepository.mapper[1] = 0;
+        walletRepository.mapper[2] = 0;
 
         walletController.save(1, 1000);
         walletController.save(2, 1000);
@@ -47,7 +51,7 @@ describe('Controller', () => {
     });
 
     it('should fail when saving negative amount', () => {
-        walletController.mapper[1] = 0;
+        walletRepository.mapper[1] = 0;
 
         expect(() => walletController.save(1, -1000)).toThrowError(INVALID_AMOUNT);
     });
