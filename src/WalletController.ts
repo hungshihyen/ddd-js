@@ -1,9 +1,12 @@
 export class WalletController {
-    static getBalance(): any {
-        return 1000;
+    amount: number = 0;
+
+    getBalance(): any {
+        return this.amount;
     }
 
-    save(arg0: number) {
+    save(amount: number) {
 
+        this.amount = amount;
     }
 }
