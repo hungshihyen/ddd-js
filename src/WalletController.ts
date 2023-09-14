@@ -7,6 +7,6 @@ export class WalletController {
 
     save(amount: number) {
 
-        this.amount = amount;
+        this.amount += amount;
     }
 }
