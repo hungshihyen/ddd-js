@@ -1,3 +1,5 @@
+import { INVALID_AMOUNT } from './ErrorCode';
+
 export class WalletController {
     mapper: { [key: number]: number } = {};
 
@@ -6,7 +8,11 @@ export class WalletController {
     }
 
     save(userId: number, amount: number) {
-        this.mapper[userId] += amount;
 
+        if (amount <= 0) {
+            throw new Error(INVALID_AMOUNT);
+        }
+
+        this.mapper[userId] += amount;
     }
 }

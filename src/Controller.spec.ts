@@ -1,4 +1,5 @@
 import { WalletController } from './WalletController';
+import { INVALID_AMOUNT } from './ErrorCode';
 
 describe('Controller', () => {
     let walletController: WalletController;
@@ -45,4 +46,11 @@ describe('Controller', () => {
         expect(walletController.getBalance(2)).toBe(1000);
     });
 
+    it('should fail when saving negative amount', () => {
+        walletController.mapper[1] = 0;
+
+        expect(() => walletController.save(1, -1000)).toThrowError(INVALID_AMOUNT);
+    });
+
 });
+
