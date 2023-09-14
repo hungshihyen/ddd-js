@@ -1,4 +1,4 @@
-import { INVALID_AMOUNT } from './ErrorCode';
+import { INVALID_AMOUNT, USER_NOT_FOUND } from './ErrorCode';
 
 export class WalletController {
     mapper: { [key: number]: number } = {};
@@ -11,6 +11,11 @@ export class WalletController {
 
         if (amount <= 0) {
             throw new Error(INVALID_AMOUNT);
+        }
+        const userAmount = this.mapper[userId];
+
+        if (userAmount === undefined) {
+            throw new Error(USER_NOT_FOUND);
         }
 
         this.mapper[userId] += amount;

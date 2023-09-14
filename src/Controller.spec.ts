@@ -1,5 +1,5 @@
 import { WalletController } from './WalletController';
-import { INVALID_AMOUNT } from './ErrorCode';
+import { INVALID_AMOUNT, USER_NOT_FOUND } from './ErrorCode';
 
 describe('Controller', () => {
     let walletController: WalletController;
@@ -50,6 +50,10 @@ describe('Controller', () => {
         walletController.mapper[1] = 0;
 
         expect(() => walletController.save(1, -1000)).toThrowError(INVALID_AMOUNT);
+    });
+
+    it('should fail when user not found', () => {
+        expect(() => walletController.save(1, 1000)).toThrowError(USER_NOT_FOUND);
     });
 
 });
