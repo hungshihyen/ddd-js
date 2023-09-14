@@ -1,12 +1,12 @@
 export class WalletController {
-    amount: number = 0;
+    mapper: { [key: number]: number } = {};
 
-    getBalance(): any {
-        return this.amount;
+    getBalance(userId: number): any {
+        return this.mapper[userId];
     }
 
-    save(amount: number) {
+    save(userId: number, amount: number) {
+        this.mapper[userId] += amount;
 
-        this.amount += amount;
     }
 }
