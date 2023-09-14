@@ -1,14 +1,12 @@
-class SaveMoneyController {
-    save(arg0: number) {
-       
-    }
-}
+import { WalletController } from './WalletController';
 
 describe('Controller', () => {
 
     it('should save money ok', () => {
 
-        new SaveMoneyController().save(1000);
+        new WalletController().save(1000);
+
+        expect(WalletController.getBalance()).toBe(1000);
 
     });
 
