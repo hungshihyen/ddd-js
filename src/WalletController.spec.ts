@@ -8,8 +8,8 @@ describe('WalletController', () => {
     let walletController: WalletController;
 
     beforeEach(() => {
-        let walletRepository = new WalletRepository();
-        
+        const walletRepository = new WalletRepository();
+
         walletController = new WalletController(
             new CreateUserService(walletRepository),
             new GetBalanceService(walletRepository),
