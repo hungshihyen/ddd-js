@@ -14,4 +14,11 @@ describe('WalletController', () => {
 
     });
 
+    it('should save money twice', () => {
+        walletController.save(100);
+        walletController.save(100);
+
+        expect(walletController.getBalance()).toBe(200);
+    });
+
 });
