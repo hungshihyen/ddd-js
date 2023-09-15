@@ -1,15 +1,32 @@
-export class WalletController {
-    private mapper: any = {};
+import { WalletRepository } from './WalletRepository';
+import { CreateUserService } from './CreateUserService';
+import { GetBalanceService } from './GetBalanceService';
+import { SaveMoneyService } from './SaveMoneyService';
 
-    createUser(userId: number) {
-        this.mapper[userId] = 0;
+export class WalletController {
+    walletRepository: WalletRepository;
+    createUserService: CreateUserService;
+    private saveMoneyService: SaveMoneyService;
+    private getBalanceService: GetBalanceService;
+
+    constructor(createUserService1: CreateUserService, getBalanceService: GetBalanceService, saveMoneyService: SaveMoneyService) {
+        this.walletRepository = new WalletRepository();
+        this.createUserService = createUserService1;
+        this.getBalanceService = getBalanceService;
+        this.saveMoneyService = saveMoneyService;
     }
 
     getBalance(userId: number): any {
-        return this.mapper[userId];
+        return this.getBalanceService.get(userId);
     }
 
-    save(amount: number, userId: number) {
-        this.mapper[userId] += amount;
+    saveMoney(userId: number, amount: number) {
+
+        this.saveMoneyService.save(userId, amount);
+
+    }
+
+    createUser(userId: number) {
+        this.createUserService.create(userId);
     }
 }
