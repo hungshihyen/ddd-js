@@ -9,9 +9,9 @@ export class WalletController {
     private saveMoneyService: SaveMoneyService;
     private getBalanceService: GetBalanceService;
 
-    constructor(createUserService1: CreateUserService, getBalanceService: GetBalanceService, saveMoneyService: SaveMoneyService) {
+    constructor(createUserService: CreateUserService, getBalanceService: GetBalanceService, saveMoneyService: SaveMoneyService) {
         this.walletRepository = new WalletRepository();
-        this.createUserService = createUserService1;
+        this.createUserService = createUserService;
         this.getBalanceService = getBalanceService;
         this.saveMoneyService = saveMoneyService;
     }
