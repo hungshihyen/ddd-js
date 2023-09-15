@@ -8,17 +8,35 @@ describe('WalletController', () => {
     });
 
     it('should save money ok', () => {
-        walletController.save(100);
 
-        expect(walletController.getBalance()).toBe(100);
+        walletController.createUser(1);
+
+        walletController.save(100, 1);
+
+        expect(walletController.getBalance(1)).toBe(100);
 
     });
 
     it('should save money twice', () => {
-        walletController.save(100);
-        walletController.save(100);
 
-        expect(walletController.getBalance()).toBe(200);
+        walletController.createUser(1);
+
+        walletController.save(100, 1);
+        walletController.save(100, 1);
+
+        expect(walletController.getBalance(1)).toBe(200);
+    });
+
+    it('different users', () => {
+
+        walletController.createUser(1);
+        walletController.createUser(2);
+
+        walletController.save(100, 1);
+        walletController.save(100, 2);
+
+        expect(walletController.getBalance(1)).toBe(100);
+        expect(walletController.getBalance(2)).toBe(100);
     });
 
 });
