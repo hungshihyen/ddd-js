@@ -3,7 +3,7 @@ import { GetBalanceService } from './GetBalanceService';
 import { SaveMoneyService } from './SaveMoneyService';
 
 export class WalletController {
-    createUserService: CreateUserService;
+    private createUserService: CreateUserService;
     private saveMoneyService: SaveMoneyService;
     private getBalanceService: GetBalanceService;
 

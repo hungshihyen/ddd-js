@@ -1,9 +1,9 @@
-import { WalletRepository } from './WalletRepository';
+import { WalletRepositoryImpl } from './WalletRepositoryImpl';
 
 export class GetBalanceService {
-    walletRepository: WalletRepository;
+    walletRepository: WalletRepositoryImpl;
 
-    constructor(walletRepository: WalletRepository) {
+    constructor(walletRepository: WalletRepositoryImpl) {
         this.walletRepository = walletRepository;
     }
 

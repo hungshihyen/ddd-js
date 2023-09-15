@@ -1,6 +1,6 @@
 import { WalletController } from './WalletController';
 import { CreateUserService } from './CreateUserService';
-import { WalletRepository } from './WalletRepository';
+import { WalletRepositoryImpl } from './WalletRepositoryImpl';
 import { GetBalanceService } from './GetBalanceService';
 import { SaveMoneyService } from './SaveMoneyService';
 
@@ -8,7 +8,7 @@ describe('WalletController', () => {
     let walletController: WalletController;
 
     beforeEach(() => {
-        const walletRepository = new WalletRepository();
+        const walletRepository = new WalletRepositoryImpl();
 
         walletController = new WalletController(
             new CreateUserService(walletRepository),

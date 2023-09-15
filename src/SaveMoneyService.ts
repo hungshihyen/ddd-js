@@ -1,4 +1,4 @@
-import { WalletRepository } from './WalletRepository';
+import { WalletRepository } from './WalletRepositoryImpl';
 import { User } from './User';
 
 export class SaveMoneyService {
