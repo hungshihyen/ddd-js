@@ -16,8 +16,17 @@ export class AccountRepository {
         this.mapper = mapper;
     }
 
+    save(account: any) {
+        this.mapper[account.userId] = account;
+    }
+
     create(userId: number) {
         this.mapper[userId] = new Account(userId, 0);
+
+    }
+
+    find(userId: number) {
+        return this.mapper[userId];
 
     }
 }
@@ -36,15 +45,16 @@ export class Controller {
     }
 
     getBalance(userId: number): any {
-        return this.mapper[userId].amount;
+        return this.accountRepository.find(userId).amount;
+
     }
 
     save(amount: number, userId: number) {
 
-        const account = this.mapper[userId];
+        const account = this.accountRepository.find(userId);
 
         account.amount += amount;
 
-        this.mapper[userId] = account;
+        this.accountRepository.save(account);
     }
 }
