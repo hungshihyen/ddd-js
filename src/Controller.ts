@@ -1,11 +1,15 @@
 export class Controller {
-    private amount: number = 0;
+    private mapper: any = {};
 
-    getBalance(): any {
-        return this.amount;
+    createAccount(userId: number) {
+        this.mapper[userId] = 0;
     }
 
-    save(amount: number) {
-        this.amount += amount;
+    getBalance(userId: number): any {
+        return this.mapper[userId];
+    }
+
+    save(amount: number, userId: number) {
+        this.mapper[userId] += amount;
     }
 }
