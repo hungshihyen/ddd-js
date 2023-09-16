@@ -1,12 +1,4 @@
-class Controller {
-    getBalance(): any {
-        return 100;
-    }
-
-    save(arg0: number) {
-
-    }
-}
+import { Controller } from './Controller';
 
 describe('Controller', () => {
 
@@ -16,6 +8,14 @@ describe('Controller', () => {
 
         expect(controller.getBalance()).toBe(100);
 
+    });
+
+    it('save 200', () => {
+        const controller = new Controller();
+
+        controller.save(200);
+
+        expect(controller.getBalance()).toBe(200);
     });
 
 });
