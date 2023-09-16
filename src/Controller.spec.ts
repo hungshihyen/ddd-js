@@ -1,9 +1,13 @@
 import { Controller } from './Controller';
 
 describe('Controller', () => {
+    let controller: Controller;
+    beforeEach(() => {
+        controller = new Controller({});
+
+    });
 
     it('save 100', () => {
-        const controller = new Controller();
         controller.createAccount(1);
 
         controller.save(100, 1);
@@ -13,7 +17,6 @@ describe('Controller', () => {
     });
 
     it('save 200', () => {
-        const controller = new Controller();
         controller.createAccount(1);
 
         controller.save(200, 1);
@@ -22,7 +25,6 @@ describe('Controller', () => {
     });
 
     it('save twice', () => {
-        const controller = new Controller();
         controller.createAccount(1);
 
         controller.save(100, 1);
@@ -32,7 +34,6 @@ describe('Controller', () => {
     });
 
     it('different user', () => {
-        const controller = new Controller();
 
         controller.createAccount(1);
         controller.createAccount(2);
