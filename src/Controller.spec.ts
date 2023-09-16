@@ -18,4 +18,13 @@ describe('Controller', () => {
         expect(controller.getBalance()).toBe(200);
     });
 
+    it('save twice', () => {
+        const controller = new Controller();
+
+        controller.save(100);
+        controller.save(200);
+
+        expect(controller.getBalance()).toBe(300);
+    });
+
 });

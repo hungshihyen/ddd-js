@@ -6,6 +6,6 @@ export class Controller {
     }
 
     save(amount: number) {
-        this.amount = amount;
+        this.amount += amount;
     }
 }
